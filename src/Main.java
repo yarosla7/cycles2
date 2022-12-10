@@ -23,7 +23,8 @@ public class Main {
         float money = 0;
         float interests;
         int month = 0;
-        while (money <= 2_500_000) { // округлил до 2,5 так как из-за начисляемых процентов порог не проходит в диапазоне суммы следующего шага.
+        int point = 2_500_000;
+        while (money <= point) { // округлил до 2,5 так как из-за начисляемых процентов порог не проходит в диапазоне суммы следующего шага.
             month++;
             money = money + 15000;
             interests = money * 0.01F;
@@ -75,10 +76,11 @@ public class Main {
         int mortality1000 = 8;
         int clearBirthrate = birthrate1000 - mortality1000;
         int clearBirthrate1mln = clearBirthrate * 1000;
+        int oneMln = 1_000_000;
         int throughYears = 1;
 
         while (throughYears <= 10) {
-            y = clearBirthrate1mln * (y / 1000000) + y;
+            y = clearBirthrate1mln * (y / oneMln) + y;
             System.out.println("Год " + throughYears + " численность населения составляет " + y);
             throughYears++;
         }
@@ -100,7 +102,8 @@ public class Main {
         float interestsPerMonth = 0.07F;
         float interestsMoney;
         int month = 0;
-        while (money <= 12_000_000) {
+        int point = 12_000_000;
+        while (money <= point) {
             month++;
             interestsMoney = money * interestsPerMonth;
             money = money + (int)interestsMoney;
@@ -121,7 +124,8 @@ public class Main {
         float interestsPerMonth = 0.07F;
         float interestsMoney;
         int month = 0;
-        while (money <= 12_000_000) {
+        int point = 12_000_000;
+        while (money <= point) {
             month++;
             interestsMoney = money * interestsPerMonth;
             money = money + (int)interestsMoney;
@@ -145,7 +149,7 @@ public class Main {
         float interestsPerMonth = 0.07F;
         float interestsMoney;
         int month = 0;
-        int nineYears = 108;
+        int nineYears = 9 * 12;
         while (month <= nineYears) {
             month++;
             interestsMoney = money * interestsPerMonth;
@@ -172,11 +176,6 @@ public class Main {
         int friday = 4;
         int week = 7;
         int totalMonthDays = 31;
-        System.out.println("Сегодня пятница, " + friday + "-е число. Необходимо подготовить отчет.");
-        while (friday + week <= totalMonthDays) {
-            friday += week;
-            System.out.println("Сегодня пятница, " + friday + "-е число. Необходимо подготовить отчет."); // спросить, почему не выводилась 4-ая пятница.
-        }
         for (; friday <= totalMonthDays; friday = week + friday) {
             System.out.println("Сегодня пятница, " + friday + "-е число. Необходимо подготовить отчет.");
         }
